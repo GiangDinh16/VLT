@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy Valentine</title>
+    <link rel="stylesheet" href="/output.css" />
+  </head>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #ffe6e6;
+        color: #d63384;
+        margin: 0;
+        padding: 20px;
+        overflow: hidden;
+        position: relative;
+      }
+      .container {
+        max-width: 90%;
+        width: 600px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #ff4081;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+      }
+      .gallery {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 20px;
+      }
+      .gallery-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: calc(50% - 10px);
+      }
+      .gallery img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+      .caption,
+      .date {
+        display: none;
+        margin-top: 5px;
+        font-size: 14px;
+        color: #a81b61;
+      }
+      .date {
+        font-size: 12px;
+        color: #666;
+        font-style: italic;
+        margin-top: 2px;
+      }
+      .love-letter {
+        display: none;
+        margin-top: 20px;
+        background-color: #fff0f5;
+        padding: 15px;
+        border-radius: 10px;
+        font-style: italic;
+        color: #a81b61;
+        border: 1px solid #ff99cc;
+        opacity: 0;
+        transform: scale(0.8);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+      }
+      .love-letter.show {
+        opacity: 1;
+        transform: scale(1);
+      }
+      .btn {
+        margin-top: 15px;
+        padding: 10px 20px;
+        background-color: #ff66b2;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+      @media (max-width: 480px) {
+        .gallery-item {
+          width: 100%;
+        }
+        .container {
+          width: 100%;
+          padding: 15px;
+        }
+        .btn {
+          font-size: 14px;
+          padding: 8px 15px;
+        }
+      }
+      @keyframes fall {
+        from {
+          transform: translateY(-100vh);
+          opacity: 1;
+        }
+        to {
+          transform: translateY(100vh);
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <audio autoplay loop>
+      <source
+        src="https://www.bensound.com/bensound-music/bensound-romantic.mp3"
+        type="audio/mpeg"
+      />
+    </audio>
+    <div class="container">
+      <h1>Happy Valentine 💖</h1>
+      <p>Our moments together !</p>
+      <div class="gallery">
+        <div class="gallery-item" onclick="toggleImage(this)">
+          <img
+            src="/image/gift.png"
+            alt="Memory 1"
+            data-alt-src="/image/cow lover (3).gif"
+          />
+          <p class="caption">Lần đầu match nhau </p>
+          <p class="date">25/11/2024</p>
+        </div>
+        <div class="gallery-item" onclick="toggleImage(this)">
+            <img
+              src="/image/gift.png"
+              alt="Memory 1"
+              data-alt-src="/image/839280c97a6cc5329c7d.jpg"
+            />
+            <p class="caption">Buổi hẹn hò đầu tiên</p>
+            <p class="date">24/12/2024</p>
+          </div>
+          <div class="gallery-item" onclick="toggleImage(this)">
+            <img
+              src="/image/gift.png"
+              alt="Memory 1"
+              data-alt-src="/image/91bc79739cd623887ac7.jpg"
+            />
+            <p class="caption">Ngày mình yêu nhau</p>
+            <p class="date">01/01/2025</p>
+          </div>
+        <div class="gallery-item" onclick="toggleImage(this)">
+          <img
+            src="/image/gift.png"
+            alt="Memory 2"
+            data-alt-src="/image/IMG_7732.jpg"
+          />
+          <p class="caption"> Chuyến đi đầu tiên cùng nhau</p>
+          <p class="date">01/02/2025</p>
+        </div>
+      </div>
+      <button class="btn" onclick="toggleLetter()">Mở thư 💌</button>
+      <div class="love-letter" id="loveLetter">
+        <h2>Gửi anh yêu của em,</h2>
+        <p>
+          "Cảm ơn baby rất nhiều vì đã yêu em và đồng hành cùng em, em chúc baby một valentine thật vui và hạnh phúc bên em, hãy cùng nhau đón thật nhiều buổi valentine cùng nhau nhé anh hihi ! Thư này em viết nhanh hoyyy còn tất cả tình cảm của bé đặt vào trong thư tay rùi nhé hihi , em chỉ muốn nói là EM YÊU ANH ❤️ "
+        </p>
+      </div>
+    </div>
+    <script>
+      function toggleLetter() {
+        const letter = document.getElementById("loveLetter");
+        if (letter.style.display === "block") {
+          letter.classList.remove("show");
+          setTimeout(() => {
+            letter.style.display = "none";
+          }, 500);
+        } else {
+          letter.style.display = "block";
+          setTimeout(() => {
+            letter.classList.add("show");
+          }, 10);
+        }
+      }
+      function toggleImage(element) {
+        let img = element.querySelector("img");
+        let caption = element.querySelector(".caption");
+        let date = element.querySelector(".date");
+        let tempSrc = img.src;
+        img.src = img.getAttribute("data-alt-src");
+        img.setAttribute("data-alt-src", tempSrc);
+        if (caption.style.display === "block") {
+          caption.style.display = "none";
+          date.style.display = "none";
+        } else {
+          caption.style.display = "block";
+          date.style.display = "block";
+        }
+      }
+      function createHeart() {
+        const heart = document.createElement("div");
+        heart.innerHTML = "❤️";
+        heart.style.position = "absolute";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.top = "-10px";
+        heart.style.animation = "fall 3s linear infinite";
+        heart.style.fontSize = "20px";
+        document.body.appendChild(heart);
+        setTimeout(() => {
+          heart.remove();
+        }, 3000);
+      }
+      setInterval(createHeart, 500);
+    </script>
+  </body>
+</html>
