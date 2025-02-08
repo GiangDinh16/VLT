@@ -131,6 +131,14 @@
         type="audio/mpeg"
       />
     </audio>
+
+    <audio autoplay id="loveAudio">
+      <source
+        src="audio/du_cho_tan_the.mp3"
+        type="audio/mpeg"
+      />
+    </audio>
+    
     <div class="container">
       <h1>Happy Valentine 💖</h1>
       <p>Our moments together !</p>
@@ -202,6 +210,13 @@
         // Scroll to bottom
         const container = document.querySelector(".container");
         container.scrollTop = container.scrollHeight;
+
+
+        playAudio()
+      }
+      function playAudio() {
+        const audio = document.getElementById("loveAudio");
+        audio.play();
       }
       function toggleImage(element) {
         let img = element.querySelector("img");
