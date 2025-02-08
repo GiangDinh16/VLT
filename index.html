@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="/output.css" />
   </head>
     <style>
+      html {
+        height: 100vh;
+      }
       body {
         font-family: Arial, sans-serif;
         text-align: center;
@@ -16,6 +19,8 @@
         padding: 20px;
         overflow: hidden;
         position: relative;
+        display: flex;
+        height: 100%;
       }
       .container {
         max-width: 90%;
@@ -167,7 +172,7 @@
           <p class="date">01/02/2025</p>
         </div>
       </div>
-      <button class="btn" onclick="toggleLetter()">Mở thư 💌</button>
+      <button class="btn buttonLetter" onclick="toggleLetter()">Mở thư 💌</button>
       <div class="love-letter" id="loveLetter">
         <h2>Gửi anh yêu của em,</h2>
         <p>
@@ -178,17 +183,25 @@
     <script>
       function toggleLetter() {
         const letter = document.getElementById("loveLetter");
+        const buttonLetter = document.querySelector(".buttonLetter");
+
         if (letter.style.display === "block") {
+          buttonLetter.innerText = 'Mở thư 💌'
           letter.classList.remove("show");
           setTimeout(() => {
             letter.style.display = "none";
           }, 500);
-        } else {
+        } else {  
+          buttonLetter.innerText = 'Đóng thư 💌'
           letter.style.display = "block";
           setTimeout(() => {
             letter.classList.add("show");
           }, 10);
         }
+
+        // Scroll to bottom
+        const container = document.querySelector(".container");
+        container.scrollTop = container.scrollHeight;
       }
       function toggleImage(element) {
         let img = element.querySelector("img");
